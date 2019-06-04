@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background: -webkit-radial-gradient(#1a5970 0%, #000000 100%);
+  background: radial-gradient(#1a5970 0%, #000000 100%); */
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0px;
+  font-size: 0px;
+  clear: both;
+  visibility: hidden;
+}
+ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 10px 10px 10px 10px #eee;
+  background: #0f626b;
+}
+ul li {
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+  display: inline-block;
+}
+ul li:hover, ul li.active {
+  cursor: pointer;
+  color: #efefef;
+  background-color: #f79f00;
+}
+</style>
+</head>
+<body>
+  <div style="width: 100%;height: 100%;">
+    <ul>
+      <li id="h0" onclick="handle(0)">效果1</li>
+      <li id="h1" onclick="handle(1)">效果2</li>
+      <li id="h2" onclick="handle(2)">效果3</li>
+      <li id="h3" onclick="handle(3)">效果4</li>
+      <li id="h4" onclick="handle(4)">效果5</li>
+      <li id="h5" onclick="handle(5)">效果6</li>
+    </ul>
+    <div id="id0" style="width: 100%;height: 100%;">
+      <iframe id="ifr0" src="" border="0" style="border: 0;width: 100%;height: 100%;"></iframe>
+    </div>
+    <div id="id1" style="width: 100%;height: 100%;">
+      <iframe id="ifr1" src="" border="0" style="border: 0;width: 100%;height: 100%;"></iframe>
+    </div>
+    <div id="id2" style="width: 100%;height: 100%;">
+      <iframe id="ifr2" src="" border="0" style="border: 0;width: 100%;height: 100%;"></iframe>
+    </div>
+    <div id="id3" style="width: 100%;height: 100%;">
+      <iframe id="ifr3" src="" border="0" style="border: 0;width: 100%;height: 100%;"></iframe>
+    </div>
+    <div id="id4" style="width: 100%;height: 100%;">
+      <iframe id="ifr4" src="" border="0" style="border: 0;width: 100%;height: 100%;"></iframe>
+    </div>
+    <div id="id5" style="width: 100%;height: 100%;">
+      <iframe id="ifr5" src="" border="0" style="border: 0;width: 100%;height: 100%;"></iframe>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+function handle(n) {
+  for(var i = 0; i < 6; i++) {
+    if(n === i) {
+      document.getElementById("h" + i).className = "active";
+      document.getElementById("id" + i).style.display = "block";
+      document.getElementById("ifr" + i).src = i + "/index.html?" + new Date().getTime();
+    } else {
+      document.getElementById("h" + i).className = "";
+      document.getElementById("id" + i).style.display = "none";
+    }
+  }
+}
+handle(0);
+</script>
+</html>

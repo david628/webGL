@@ -1,0 +1,54 @@
+/**@name common.css
+ * @author Sean.xiang
+ *@date 15-3-30
+ *@version
+ *@dec 大屏整体风格 颜色、背景、字体大小
+ */
+@charset "UTF-8";
+
+/*css reset*/
+
+body,div,ul,li,a,input,select,button,th,td{margin: 0;padding: 0;}
+table{border-collapse: collapse; border-spacing: 0;}
+img{border: 0;}
+ul,li{list-style: none outside none;}
+a,a:hover,a:active{ text-decoration: none;}
+body, html { height: 100%;}
+
+.c-red{color: #e8200b!important;}
+.c-yellow{color: #f9e400!important;}
+.c-orange{color: #fe863d!important;}
+.c-green{color:#3ab852!important;}
+.c-blue{color:#00a2fd!important;}
+.s-red-label,.red-label ,.yellow-label,.orange-label,.blue-label,.green-label{padding: 4px 20px;}
+.s-red-label{border-left: 4px solid #9e0000;background-color: #e7bfbf; }
+.red-label{border-left: 4px solid #e8200b;background-color: #fad2ce; }
+.yellow-label{border-left: 4px solid #ffbf00;background-color: #fff2cc; }
+.orange-label{border-left: 4px solid #fe863d;background-color: #ffe7d8;}
+.blue-label{border-left: 4px solid #42b1ff;background-color: #d9efff; }
+.green-label{border-left: 4px solid #3ab852;background-color: #d8f1dc; }
+.bg-red{background-color: #f0412f!important;}
+.bg-grey{background-color: grey!important}
+.bg-yellow{background-color: #f5942c!important;}
+.bg-orange{background-color: #c3b760!important;}
+.bg-green{background-color:#2ecd73!important;}
+.bg-blue{background-color:#00a2fd!important;}
+.no-margin{margin: 0}
+.mt-5{margin-top: 5px;!important;}
+.mt-6{margin-top: 6px;!important;}
+.mt-10{margin-top: 10px;!important;}
+.mt-15{margin-top: 15px;!important;}
+.mt-20{margin-top: 20px;!important;}
+.mt-40{margin-top: 40px;!important;}
+.ml-6{ margin-left: 6px!important;}
+.ml-10{ margin-left: 10px!important;}
+.m-10{margin: 10px;!important;}
+.no-padding{padding: 0;}
+.p-6{padding: 6px;!important;}
+.p-10{padding: 10px;!important;}
+
+.fl{ float: left;}
+.fr{ float: right;}
+.clear {clear: both;}
+
+

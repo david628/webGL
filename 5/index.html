@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>综合安全态势</title>
+  <link rel="stylesheet" href="css/font-awesome.css"/>
+  <link rel="stylesheet" href="css/security.css"/>
+  <style type="text/css">
+  body {
+    background-color: #000000;
+    /* background-image: radial-gradient(ellipse farthest-corner at center top, #23233f 0%, #000000 60%); */
+  }
+  @font-face {
+	  font-family: 'Orbitron';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: local('Orbitron Regular'), local('Orbitron-Regular'), url(fonts/orbitron.woff2) format('woff2');
+	  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+	}
+	.screen_logo_img {
+    margin-left: 16px;
+  }
+	.screen_headera {
+    /* box-shadow: 0px 0px 16px #18b283; */
+    /* background-color: #000000;
+    background-image: radial-gradient(ellipse farthest-corner at center top, #23233f 0%, #000000 60%); */
+    padding: 0;
+    /* border-top: 1px solid #18d0ee;
+    border-bottom: 1px solid #18d0ee;
+    background-color: #000; */
+  }
+  .screen_header_section {
+    /* background-image: url(../../../images/header_logo_holder.png); */
+    width: 500px;
+    height: 100%;
+  }
+  .screen_logo_txt {
+    line-height: 0.45rem;
+    font-size: 0.24rem;
+    color: #fff;
+    /* color: #2ed889;
+    text-shadow: 0 0 20px #0cffa2; */
+    margin-left: 0.26rem;
+  }
+  .webgl-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* background-image: url(../../../images/bg-login.png); */
+  }
+  .screen_content_bottom {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.1rem 0.4rem;
+  }
+  .scrollList-header {
+    color: #fff;
+    background-color: #050f0eb3;
+  }
+  .scrollBody {
+    /* background-color: #050f0eb3; */
+  }
+  .scrollBody ul>li {
+    /* color: #2CF5BF !important; */
+    color: #fff !important;
+    font-size: 0.16rem !important;
+    padding: 0.02rem 0.5rem !important;
+  }
+  .scrollList-header .scrollList-header-item {
+    font-size: 0.18rem !important;
+    padding: 0.04rem 0.5rem !important;
+  }
+  
+  .item_header_ctext {
+    margin: 0 .25rem;
+  }
+  .item-box {
+    border-radius: 6px;
+    box-shadow: 0px 0px 16px #18b283;
+    /* border-image-source: url(../../../images/panel-type-1-stroke.png);
+    border-image-slice: 16 48 fill;
+    border-image-width: 16px 48px; */
+    
+    /* border-image-source: url(../../../images/panel-type-3.png);
+    border-image-slice: 40 30 fill;
+    border-image-width: 40px 30px; */
+  }
+  .item-box .item_header {
+    text-align: center;
+    position: relative;
+    top: -0.22rem;
+  }
+  .item-box .item_header .item_header_left {
+    margin: 0 auto;
+    /* border: 1px solid #588E8E;
+    border-radius: 0.3rem;
+    background: #000202; */
+  }
+  .item-box .item_header_ctext {
+    color: #FCFFFF;
+    padding: 0 0.2rem;
+    line-height: 0.4rem;
+    font-size: 0.16rem;
+    border-radius: 6px;
+    background: #000d08;
+    box-shadow: 0px 0px 16px #18b283;
+  }
+  
+  .item-box .rank {
+    padding: 0.2rem 0.15rem;
+    margin-top: -0.2rem;
+    padding-bottom: 0.05rem;
+  }
+  .item-box .ring {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 26px !important;
+    border: 2px solid #588E8E;
+    border-radius: 50%;
+    text-align: center;
+    margin-top: -4px;
+  }
+  /* .item-box .ani span {
+    color: #0B888C !important;
+  } */
+  .item-box .ring span {
+    margin: 0 auto;
+  }
+  .item-box .top-numtext {
+    display: none;
+  }
+  /* .item-box .ani {
+    float: none !important;
+  } */
+  .item-box .item_section {
+    background: transparent;
+  }
+  .item-box .Top-rank-item {
+    height: 10.39%;
+    /* height: 8%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    border-image-source: url(../../../images/btn-navbar-selected.png);
+    border-image-slice: 15 fill;
+    border-image-width: 15px; */
+  }
+  .item-box .Top-items-progress {
+    display: none;
+  }
+  .item-box .marRank {
+    line-height: 22px;
+    display: none;
+  }
+  .item-box .Top-area-text {
+    /* padding-left: 10px; */
+    padding-top: 1px;
+  }
+  .item-box .Top-area-icon {
+	  display: none;
+	}
+  
+  .earth-marker {
+    position: absolute;
+    display: inline-block;
+    /* background-color: rgb(0, 13, 8); */
+    text-shadow: 0 0 0.5em #15a541;
+    color: #c5f9e0;
+    font-size: 0.20rem;
+    font-family: 'RopaSans';
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    margin: 0px;
+    border: 0px;
+    padding: 3px 5px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 10px 10px 0 10px;
+  }
+  
+  .tick-wrap {
+    /* top: 50%; */
+    /* background: rgba(30,30,30,0); */
+    /* border: 1px solid #00ad7a; */
+    border-radius: 8px;
+    padding: 0.18rem 0.10rem;
+    list-style-type: none;
+    color: #ddd;
+    /* box-shadow: 0px 0px 16px #18b283; */
+  }
+  .tick-wrap .tick-list {
+    font-size: 0.16rem;
+    /* color: lime; */
+    padding: 0.08rem 0.15rem;
+    margin-left: 0.05rem;
+    position: relative;
+    top: 0;
+    -moz-transition: 0.2s all ease;
+    -webkit-transition: 0.2s all ease;
+    -o-transition: 0.2s all ease;
+    transition: 0.2s all ease;
+  }
+  .tick-wrap .tick-list .tick-flag {
+    float: left;
+  }
+  .tick-wrap .tick-list .tick-label {
+    font-size: 0.16rem;
+    padding-right: 0.1rem;
+    /* font-weight: normal;
+    position: relative;
+    top: -0.04rem;
+    left: 0.05rem;
+    opacity: 0.9; */
+  }
+  .tick-wrap .tick-list .tick-text {
+    /* display: block; */
+    font-size: 0.22rem;
+    font-family: Helvetica,arial,sans-serif;
+    font-style: italic;
+    /* font-family: "Orbitron"; */
+    font-family: "customUUSUN";
+    color: #2ed889;
+  }
+  
+  .dtc-list {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    bottom: 5px;
+    width: auto;
+    z-index: 5;
+    overflow: hidden;
+    text-align: center;
+  }
+  .dtc-list .tick-wrap {
+    margin: 0 auto;
+  }
+  .dtc-list .tick-ulist {
+    overflow: hidden;
+    float: none;
+    /* font-size: 14px; */
+    margin: 0 auto;
+    display: table;
+  }
+  .dtc-list .tick-list {
+    float: left;
+    color: #456e59;
+    line-height: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* border: 1px solid #456e59;
+    background-color: #17201c; */
+    border-image-source: url(../../../images/btn-navbar-selected.png);
+    border-image-slice: 15 fill;
+    border-image-width: 15px;
+    
+    line-height: 36px;
+    padding: 5px 20px;
+    color: #fff;
+    
+    -webkit-transition: text-shadow 0.15s linear;
+    -moz-transition: text-shadow 0.15s linear;
+    -ms-transition: text-shadow 0.15s linear;
+    -o-transition: text-shadow 0.15s linear;
+    transition: text-shadow 0.15s linear;
+    
+    -webkit-transition-delay: 1s;
+    transition-delay: 1s;
+    -webkit-animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -ms-animation: fadein 1s;
+    -o-animation: fadein 1s;
+    animation: fadein 1s;
+    /* text-shadow: 0 0 10px #47f8d2, 0 0 25px #47f8d2, 0 0 50px #47f8d2; */
+    /* text-shadow: 0 0 10px #3cf0ff, 0 0 25px #3cf0ff, 0 0 50px #3cf0ff; */
+  }
+  .dtc-list .item-box {
+    box-shadow: none;
+    border-image: none;
+  }
+  /* .perspective-wrap {
+    perspective: 800px;
+  }
+  .perspective-wrap .perspective-box {
+    transform: rotateY(25deg);
+  } */
+  .unit {
+    font-family: sans-serif;
+    font-style: normal;
+    margin-left: 0.1rem;
+    color: #43e9c6;
+    font-size: 0.18rem;
+  }
+  
+  
+  
+   .sm-info-container {
+  display: block;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  /* display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; */
+}
+ .sm-info-container::before,  .sm-info-container::after,  .sm-settings button strong {
+  padding-top: 10px;
+}
+ .sm-back-indicator-container,  .sm-info-container::before,  .sm-info-container::after,  .sm-settings {
+  /* background-color: rgba(0,0,0,0.9); */
+  border-bottom: 1px solid #2ed889;
+}
+.sm-starmap-application .sm-indicator {
+  background-color: rgba(0,0,0,0.9);
+}
+ .sm-info-container::before,  .sm-info-container::after {
+  content: '';
+  display: block;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  pointer-events: auto;
+}
+ .sm-info-container .sm-info {
+  pointer-events: auto;
+  display: block;
+  height: 10px;
+  padding: 10px 30px 0;
+  position: relative;
+  /* background-color: rgba(0,0,0,0.9); */
+  font-family: 'Orbitron',sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  /* text-shadow: 4px 4px 10px rgba(0,90,255,0.33), -4px -4px 10px rgba(0,90,255,0.33), -4px 4px 10px rgba(0,90,255,0.33), 4px -4px 10px rgba(0,90,255,0.33); */
+}
+ .sm-info-container .sm-info::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 30px 30px 0;
+  border-color: transparent transparent transparent transparent;
+  position: absolute;
+  top: auto;
+  left: 0;
+  bottom: -30px;
+  right: auto;
+}
+ .sm-info-container .sm-info .sm-info-inner {
+  display: block;
+  background-color: rgba(0,0,0,0.9);
+  border-bottom: 1px solid #2ed889;
+  padding: 0px 60px;
+  margin-top: -10px;
+  height: 40px;
+}
+ .sm-info-container .sm-info::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 30px 30px 0;
+  border-color: transparent transparent transparent transparent;
+  position: absolute;
+  top: auto;
+  left: auto;
+  bottom: -30px;
+  right: 0;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+ .sm-info-container .sm-info .sm-info-inner::before,  .sm-info-container .sm-info .sm-info-inner::after {
+  content: '';
+  position: absolute;
+  top: auto;
+  left: -1px;
+  bottom: -30px;
+  right: auto;
+  z-index: 2;
+  width: 6px;
+  height: 30px;
+  -webkit-transform: skew(45deg);
+  transform: skew(45deg);
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+  background-color: #65ffbd;
+  box-shadow: 4px 4px 10px rgba(53, 220, 142, 0.79), -4px -4px 10px rgba(53, 220, 142, 0.79), -4px 4px 10px rgba(53, 220, 142, 0.79), 4px -4px 10px rgba(53, 220, 142, 0.79);
+}
+ .sm-info-container .sm-info .sm-info-inner::after {
+  left: auto;
+  right: -1px;
+  -webkit-transform: skew(-45deg);
+  transform: skew(-45deg);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+ .sm-info-container .sm-info.sm-affiliation-uee h1::before {
+  display: none;
+  content: '\e609';
+}
+ .sm-info-container .sm-info h1::before {
+  font-family: 'starmap-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  margin-right: 10px;
+}
+ .sm-info-container .sm-info h1 span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+}
+ .sm-info-container .sm-info .sm-designation:empty {
+  display: none;
+}
+  </style>
+</head>
+<body>
+  <div class="sm-info-container" style="position: absolute;width: 100%;left: 0;top: -9px;z-index: 100;">
+    <div class="sm-info sm-status-P sm-affiliation-uee">
+    <div class="sm-info-inner">
+      <h1>
+        <span class="sm-name"></span>
+        <span id="id-title" class="sm-designation"></span>
+      </h1>
+    </div>
+    </div>
+  </div>
+  <div class="screen_section">
+    <div class="screen_header">
+      <div class="screen_headera">
+        <div class="screen_header_section">
+          <div class="screen_logo">
+            <div class="screen_logo_img" style="height: 0.4rem;">
+            </div>
+            <div class="screen_logo_txt">综合安全态势</div>
+          </div>
+          <div id="id-searchBar"></div>
+        </div>
+        <div class="header_img">
+          <!-- <img src="./images/line.png" alt=""> -->
+        </div>
+      </div>
+      <div class="dtc-list">
+        <div class="tick-wrap item-box">
+	        <ul class="tick-ulist">
+						<li class="tick-list">
+							<div class="tick-label-flag"></div>
+							<span class="tick-label">总记录数</span>
+							<span id="id-validattack" class="tick-text"></span>
+						</li>
+						<li class="tick-list">
+							<div class="tick-label-flag"></div>
+							<span class="tick-label">磁盘使用量</span>
+							<span id="id-storage" class="tick-text"></span>
+						</li>
+						<li class="tick-list">
+							<div class="tick-label-flag"></div>
+							<span class="tick-label">安全事件数</span>
+							<span id="id-dealattack" class="tick-text"></span>
+						</li>
+						<li class="tick-list">
+							<div class="tick-label-flag"></div>
+							<span class="tick-label">安全事件处理率</span>
+							<span id="id-rate" class="tick-text"></span><span class="unit">%</span>
+						</li>
+					</ul>
+	      </div>
+	    </div>
+      <div id="webgl-content" class="webgl-content"></div>
+      <!-- <div id="desc" style="position: absolute;left: 0;top: 0;background: red;font-size: 0.12rem;padding: 0.1rem;">sdfsdf</div> -->
+      <div class="perspective-wrap" style="width: 3.3rem;position: absolute;left: 0.2rem;top: 0.6rem;">
+        <div class="perspective-box">
+		      <div class="left_item item-box" style="height: 5rem;margin-top: 0.8rem;">
+		        <div class="item_header">
+		          <div class="item_header_left">
+		            <!-- <div class="item_header_img">
+		              <img src="./images/header_icon.png" alt="">
+		            </div> -->
+		            <div class="item_header_ctext">资产评分</div>
+		          </div>
+		          <!-- <div class="item_header_right">
+		            <div class="item_header_btn">
+		              <i class="fa fa-ellipsis-h"></i>
+		              <div class="moreTitle">
+		                <span>更多</span> <span class="ang"></span>
+		              </div>
+		            </div>
+		          </div> -->
+		        </div>
+		        <div class="item_section">
+		          <div class="item_border"></div>
+		          <div class="item_wrap">
+		            <div id="asset_score" class="item_content rank"></div>
+		          </div>
+		        </div>
+		      </div>
+	      </div>
+      </div>
+      <div class="_perspective-wrap" style="width: 4rem;position: absolute;right: 0.2rem;top: 1.4rem;">
+        <div class="perspective-box" style="height: 100%" >
+	        <div class="tick-wrap item-box" style="transform: rotateY(-10deg); height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <div>
+              <p style="text-align: center; font-size: 0.16rem; padding: .1rem 0">受攻击类型排行</p>
+              <div style="height: 2.5rem" id="attack_type"></div>
+            </div>
+            <div style="margin-top: 0.6rem;">
+              <p style="text-align: center; font-size: 0.16rem; padding: .1rem 0">攻击源IP排行</p>
+              <div style="height: 2.5rem" id="source_ip"></div>
+            </div>
+		      </div>
+	      </div>
+      </div>
+      <div class="screen_content_bottom" style="height: 2rem;display: none;">
+        <div style="width: 30%;float: left;padding: 0.1rem;">
+          <div id="relise"></div>
+        </div>
+        <div style="width: 100%;float: left;">
+          <div id="grid-list" style="height: 1.6rem;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="screen_content_section" style="display: none;">
+      <div class="screen_content_left">
+        <div class="left_item">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">网站区域访问量</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="area_map" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        <div class="left_item">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">访问区域排行</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="req_area" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        <div class="left_item" style="display: none;">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">访问IP排行</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="req_ip" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="left_item">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">访问分析</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="req_line" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="screen_content_center">
+        <div style="text-align: center;position: absolute;bottom: 0;left: 0.4rem;right: 0;z-index: 10;">
+          <div style="width: 100%;float: left;">
+            <div id="grid-list" style="height: 1rem;"></div>
+          </div>
+          <div style="width: 100%;float: left;padding: 0.1rem;display: none;">
+            <div id="relise"></div>
+          </div>
+        </div>
+      </div>
+      <div class="screen_content_right">
+        
+        <div class="left_item">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">安全事件网站排行</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="attack_site" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="left_item">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">安全事件类型排行</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="attack_type" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="left_item" style="display: none;">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">安全事件来源IP排行</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="attack_ip" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="left_item">
+          <div class="item_header">
+            <div class="item_header_left">
+              <!-- <div class="item_header_img">
+                <img src="./images/header_icon.png" alt="">
+              </div> -->
+              <div class="item_header_ctext">流量分析</div>
+            </div>
+            <!-- <div class="item_header_right">
+              <div class="item_header_btn">
+                <i class="fa fa-ellipsis-h"></i>
+                <div class="moreTitle">
+                  <span>更多</span> <span class="ang"></span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="item_section" style="background: none;">
+            <div class="item_border"></div>
+            <div class="item_wrap">
+              <div id="attack_line" class="item_content rank"></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div id="webgl-content" class="webgl-content"></div>
+    </div>
+  </div>
+  <!-- <script type="text/javascript" src="js/webGL/js/three.min.js"></script> -->
+  <!-- <script type="text/javascript" src="js/webGL/js/three57.min.js"></script> -->
+	<!-- <script type="text/javascript" src="js/webGL/js/three60.min.js"></script> -->
+	<script type="text/javascript" src="js/webGL/js/Three.js"></script>
+	<script type="text/javascript" src="js/webGL/js/THREEx.KeyboardState.js"></script>
+	<script type="text/javascript" src="js/webGL/js/THREEx.WindowResize.js"></script>
+	<!-- <script type="text/javascript" src="js/webGL/js/TrackballControls.js"></script> -->
+	<script type="text/javascript" src="js/webGL/js/tessalator3d.js"></script>
+  <script type="text/javascript" src="js/webGL/js/country_data.js"></script>
+  <script type="text/javascript" src="js/webGL/js/app_gh.js"></script>
+  <!-- <script type="text/javascript" src="DATA.js"></script> -->
+  <!-- <script type="text/javascript" src="js/webGL/js/effekseer.min.js"></script> -->
+  <!-- <script type="text/javascript" src="js/webGL/js/earth.js"></script> -->
+  <!-- <script type="text/javascript" src="js/webGL/js/earth__.js"></script> -->
+  
+  <script type="text/javascript" src="js/jQuery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="js/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="js/echarts/map/world.js"></script>
+  <script type="text/javascript" src="js/echarts/map/zhejiang.js"></script>
+  <!-- <script type="text/javascript" src="js/echarts/world_china.min.js"></script>
+  <script type="text/javascript" src="js/echarts/zhejiangJson.js"></script> -->
+  <script type="text/javascript" src="js/echarts/citylocation_json.js"></script>
+  <script type="text/javascript" src="js/audio.js"></script>
+  <script type="text/javascript" src="js/latLon.js"></script>
+  <script type="text/javascript" src="js/base.js"></script>
+  
+  <link rel="stylesheet" href="js/scrollList/css/scroll-list.css"/>
+  <script type="text/javascript" src="js/scrollList/js/scroll-list.js"></script>
+  
+  <script type="text/javascript" src="js/comm/location-reflect.js"></script>
+  <link rel="stylesheet" href="js/top/css/chart.css"/>
+  <script type="text/javascript" src="js/top/js/chart.js"></script>
+  
+  <!-- 
+  <script type="text/javascript" src="js/security/area_map.js"></script>
+  <script type="text/javascript" src="js/security/req_area.js"></script>
+  <script type="text/javascript" src="js/security/req_ip.js"></script>
+  <script type="text/javascript" src="js/security/attack_site.js"></script>
+  <script type="text/javascript" src="js/security/attack_type.js"></script>
+  <script type="text/javascript" src="js/security/attack_ip.js"></script>
+  <script type="text/javascript" src="js/security/req_line.js"></script>
+  <script type="text/javascript" src="js/security/attack_line.js"></script> -->
+  
+  <!-- <script type="text/javascript" src="js/main.js"></script> -->
+  <script type="text/javascript" src="js/security/asset_score.js"></script>
+  <script type="text/javascript" src="js/security/scroll.js"></script>
+  <script type="text/javascript" src="js/numRun.js"></script>
+  <script type="text/javascript" src="js/security/attack_type.js"></script>
+  <script type="text/javascript" src="js/security/source_ip.js"></script>
+  <script type="text/javascript" src="js/security/main.js"></script>
+  <script type="text/javascript">
+  function addPoint(type) {
+  	if(type == 0) {
+  		/* page.earth.loadHotspot([{
+  			lat: 30,
+  			lon: 120
+  		}]); */
+  		page.earth.loadFlightLine(page.rs);
+  		audio.playFromTo("open", 0, 1);
+  	} else if(type == 1) {
+  		page.earth.loadHotspot([{
+  			lat: 46,
+  			lon: 1
+  		}]);
+  		//page.earth.loadFlightLine([]);
+  		audio.playFromTo("close", 0, 1);
+  	}
+  }
+  //addPoint(0)
+  </script>
+</body>
+</html>
